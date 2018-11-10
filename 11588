@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+#define rep(n) for(int i=0;i<n;i++)
+using namespace std;
+int main()
+{
+    int t,i=1;cin>>t;
+    while(t--)
+    {
+        int r,c,m,n,bitt=0;cin>>r>>c>>m>>n;
+        int arr[26]={0};
+        int x=r*c;
+        while(x--)
+        {
+            char p;cin>>p;
+            arr[p-65]++;
+        }
+        sort(arr,arr+26);
+        reverse(arr,arr+26);
+        rep(26) {if(arr[i]==arr[0]) bitt+=m*arr[i];else bitt+=n*arr[i];}
+        printf("Case %d: %d\n",i++,bitt);
+
+    }
+    return 0;
+}
