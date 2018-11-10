@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;cin>>t;
+    while(t--)
+    {
+        vector<long long int>vect;
+        long long int d,sum=0;
+        while(cin>>d && d!=0)
+        {vect.push_back(d);}
+        sort(vect.begin(),vect.end());
+        reverse(vect.begin(),vect.end());
+        for(int i=0;i<vect.size();i++)
+        {
+            sum+=2*powl(vect[i],i+1);
+            if(sum>5000000) break;
+        }
+        if(sum>5000000) cout<<"Too expensive\n";
+        else cout<<sum<<endl;
+    }
+    return 0;
+}
