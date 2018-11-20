@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int a=0,b=0,n,t,i,j,sum;
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%d",&n);
+        sum=n;
+        while(sum>0)
+        {
+            a+=sum%2;
+            sum/=2;
+        }
+        while(n>0)
+        {
+            sum=n%10;
+            while(sum>0)
+            {
+                b+=sum%2;
+                sum/=2;
+            }
+            n=n/10;
+        }
+        printf("%d %d\n",a,b);
+        a=0,b=0;
+    }
+}
