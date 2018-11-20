@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define M 50000
+bool mark[M];
+vector<int>sieve()
+{
+    vector<int>vex{2};
+    for(int i=3;i*i<=M;i+=2)
+    {
+        if(!mark[i])
+        {
+            for(int j=i*i;j<=M;j+=i)
+                mark[j]=1;
+        }
+    }
+    for(int i=3;i<=M;i+=2)
+    {
+        if(!mark[i]) vex.push_back(i);
+    }
+    return vex;
+
+}
+int main()
+{
+    vector<int>vect=sieve();
+    int t;cin>>t;
+    while(t--)
+    {
+        int a,b;cin>>a>>b;vector<int>fact;
+        for(long int i=a;i<=b;i++)
+        {
+            long long int n=i;long int j=0,div=1;
+            while(n>1)
+            {
+                long int d=0;
+                while(n%vect[j]==0)
+                {
+                    n/=vect[j];d++;
+                }
+                div*=(d+1);j++;if(vect.begin()+j==vect.end())break;
+            }
+            fact.push_back(div);
+        }
+        int p=(max_element(fact.begin(),fact.end())-fact.begin());
+        cout<<"Between "<<a<< " and "<<b<<", "<<a+p<<" has a maximum of "<<*max_element(fact.begin(),fact.end())<<" divisors."<<endl;
+    }
+}
