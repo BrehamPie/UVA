@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+#define M 50000
+int mark[M],prime[M];
+vector<pair<int,int>>divsor;
+void sieve()
+{
+    int at=0;prime[at++]=2;
+    for(int i=3;i*i<M;i+=2)
+    {
+        if(!mark[i])
+        {
+            for(int j=i*i;j<M;j+=i)
+            {
+                mark[j]=1;
+            }
+        }
+    }
+    for(int i=3;i<M;i+=2)
+    {
+        if(!mark[i])
+            prime[at++]=i;
+    }
+}
+void mun(int a)
+{
+    int div=0,i=0;
+
+    while(prime[i]*prime[i]<=a)
+    {
+        int c=0;
+        while(a%prime[i]==0)
+        {
+            a/=prime[i];c++;
+        }
+        if(c)divsor.push_back(make_pair(prime[i],c));
+        i++;
+
+    }
+    if(a>1) divsor.push_back(make_pair(a,1));
+}
+int tikk(int p,int q)
+{
+    int i=q,cnt=0;
+    while(p/i>=1)
+    {
+        int d=p/i;
+        cnt+=d;
+        i*=q;
+    }
+    return cnt;
+}
+int main()
+{
+    sieve();
+    int a,b;
+    while(scanf("%d %d",&a,&b)==2)
+    {
+        divsor.clear();int flag=0;
+        mun(b);
+        for(int i=0;i<divsor.size();i++)
+        {
+            int x=divsor[i].first;
+            int d=tikk(a,x);
+            int y=divsor[i].second;
+            if(d<y){flag=1;break;}
+        }
+        if(flag) printf("%d does not divide %d!\n",b,a);
+        else printf("%d divides %d!\n",b,a);
+    }
+}
