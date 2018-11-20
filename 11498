@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int n,a,b,p,q;
+    while(1)
+   {
+       scanf("%d",&n);
+    if (n==0)
+        return 0;
+        scanf("%d %d",&p,&q);
+        while(n--)
+        {
+            scanf("%d %d",&a,&b);
+            a>p && b>q?printf("NE\n"):
+            a<p && b<q?printf("SO\n"):
+            a<p && b>q?printf("NO\n"):
+            a>p && b<q?printf("SE\n"):
+                printf("divisa\n");
+        }
+    }
+}
