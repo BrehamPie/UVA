@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define M 20000000
+#define pb push_back
+bool mark[M];
+map<int,int>mp1,mp2;
+vector<int>sieve()
+{
+    vector<int>vex{2};
+    for(int i=3;i*i<=M;i+=2)
+    {
+        if(!mark[i])
+        {
+            for(int j=i*i;j<=M;j+=i)
+                mark[j]=1;
+        }
+    }
+    for(int i=3;i<=M;i+=2)
+    {
+        if(!mark[i]) vex.push_back(i);
+    }
+    return vex;
+
+}
+int main()
+{
+    vector<int>vect=sieve();
+    int t;cin>>t;
+    while(t--)
+    {
+        int G,L;
+        cin>>G>>L;
+        vector<pair<int,int>>gf,lf;
+        int i=0;int g=G,l=L,flag=0;
+        if(G>L) cout<<-1<<endl;
+        else if(G==1)cout<<1<<' '<<L<<endl;
+        else{
+        while(L>1 || G>1)
+        {
+            int c=0,d=0;
+            while(G%vect[i]==0)
+                {G/=vect[i];c++;}
+            while(L%vect[i]==0)
+                {L/=vect[i];d++;}
+            if(c>d) {flag=1;break;}
+            i++;
+        }
+        if(flag)cout<<-1<<endl;
+        else cout<<g<<' '<<l<<endl;
+        }
+    }
+return 0;
+}
