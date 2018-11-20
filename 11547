@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+int main()
+{
+    int t,i=1;cin>>t;
+    while(t--)
+    {
+        int n;cin>>n;
+        n=(n*315)+36962;
+        if(n>0)
+        {n/=10;
+        cout<<n%10<<endl;}
+        else
+        {
+            n*=-1;
+            n/=10;
+            cout<<n%10<<endl;
+        }
+    }
+    return 0;
+}
