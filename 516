@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define M 100000
+bool mark[M];
+int mu[M];
+bool nu[M];
+vector<int>sieve()
+{
+    vector<int>vex{2};mark[0]=1;mark[1]=1;
+    for(int i=4;i<=M;i+=2)mark[i]=1;
+    for(int i=3;i*i<=M;i+=2)
+    {
+        if(!mark[i])
+        {
+            for(int j=i*i;j<=M;j+=(2*i))
+                mark[j]=1;
+        }
+    }
+    for(int i=3;i<=M;i+=2)
+    {
+        if(!mark[i]) vex.push_back(i);
+    }
+    return vex;
+
+}
+int main()
+{
+    vector<int>vecr,vect=sieve();
+    while(1)
+    {
+        vecr.clear();
+        string p;getline(cin,p);stringstream ss(p);int d;
+        while(ss>>d){vecr.push_back(d);}
+        if(vecr[0]==0) break;
+        int x=1;
+        for(int i=0;i<vecr.size();i+=2)
+            x*=powl(vecr[i],vecr[i+1]);
+        x--;
+        vector<pair<int,int>>poer;
+        int i=0;
+        while(x>1)
+        {
+            int c=0;
+            while(x%vect[i]==0)
+            {
+                x/=vect[i];c++;
+            }
+            poer.push_back(make_pair(vect[i],c));i++;
+        }
+        sort(poer.begin(),poer.end());
+        reverse(poer.begin(),poer.end());
+        int flag=0;
+        for(int i=0;i<poer.size();i++)
+        {
+            if(poer[i].second!=0)
+            {
+                if(flag)cout<<' '<<poer[i].first<<' '<<poer[i].second;
+                else cout<<poer[i].first<<' '<<poer[i].second;flag=1;}
+        }
+            cout<<endl;
+
+    }
+    return 0;
+}
+
