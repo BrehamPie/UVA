@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int a,x[10000],i=0;
+    while(scanf("%d",&a)!=EOF)
+    {
+        x[i]=a;
+        int p,q;
+            for(q=0;q<=i;q++)
+            {
+                int t;
+                if(x[q]<x[i])
+                {
+                    t=x[i];
+                    x[i]=x[q];
+                    x[q]=t;
+                }
+            }
+        if(i%2==0)
+            printf("%d\n",x[i/2]);
+        else
+            printf("%d\n",(x[i/2]+x[i/2+1])/2);
+        i++;}
+
+    return 0;}
