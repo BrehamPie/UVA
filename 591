@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+#define rep(m,n) for(long long int i=m;i<n;i++)
+
+ using namespace std;
+int main()
+{
+    int n,k=0;
+    while(cin>>n && n>0)
+    {
+        int arr[n];
+        rep(0,n) cin>>arr[i];
+        sort(arr,arr+n);
+        int d=0;
+        int sum=accumulate(arr,arr+n,0);
+        rep(0,n) d+=(abs((sum/n)-arr[i]));
+        printf("Set #%d\nThe minimum number of moves is %d.\n\n",++k,d/2);
+
+    }
+return 0;
+}
