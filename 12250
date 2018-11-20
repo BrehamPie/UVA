@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+int main()
+{
+    int t,i=1;string x;
+    while(cin>>x && x!="#")
+    {
+        if(x=="HELLO") printf("Case %d: ENGLISH\n",i++);
+        else if(x=="HOLA") printf("Case %d: SPANISH\n",i++);
+        else if(x=="HALLO") printf("Case %d: GERMAN\n",i++);
+        else if(x=="BONJOUR") printf("Case %d: FRENCH\n",i++);
+        else if(x=="CIAO") printf("Case %d: ITALIAN\n",i++);
+        else if(x=="ZDRAVSTVUJTE") printf("Case %d: RUSSIAN\n",i++);
+        else printf("Case %d: UNKNOWN\n",i++);
+    }
+    return 0;
+}
