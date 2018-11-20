@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;cin>>t;for(int i=1;i<=t;i++)
+    {
+        map<string,int>mp;
+        int n;cin>>n;
+        while(n--)
+        {
+            int val;string str;cin>>str>>val;
+            mp[str]=val;
+        }
+        int ti;cin>>ti;string x;cin>>x;
+        cout<<"Case "<<i<<": ";
+        if(mp[x]<=ti && mp[x]!=0) cout<<"Yesss"<<endl;
+        else if(mp[x]<=(ti+5) && mp[x]!=0) cout<<"Late"<<endl;
+        else cout<<"Do your own homework!"<<endl;
+    }
+    return 0;
+}
