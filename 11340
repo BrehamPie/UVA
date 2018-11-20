@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+#define rep(i,n) for(int i=0;i<n;i++)
+#define pb push_back
+#define mp make_pair
+using namespace std;
+int main()
+{
+    int t;cin>>t;
+    while(t--)
+    {
+        int k;cin>>k;
+        vector<pair<char,int>>vect;
+        while(k--)
+        {
+            int d;char c;
+            cin>>c>>d;
+            vect.pb(mp(c,d));
+
+        }
+        map<char ,int> mpp;
+        cin>>k;
+        int cnt=0;
+        char c;
+        getchar();
+        while(c=getchar())
+        {
+            if(c=='\n'){cnt++;if(cnt==k) break;}
+            else mpp[c]++;
+        }
+        int ttl=0;
+        rep(i,vect.size()) ttl+=mpp[vect[i].first]*vect[i].second;
+        printf("%.2f$\n",ttl/100.0);
+
+    }
+return 0;
+}
