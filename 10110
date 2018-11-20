@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define M 100000
+bool mark[M];
+vector<int>sieve()
+{
+    vector<int>vex{2};
+    for(int i=3;i*i<=M;i+=2)
+    {
+        if(!mark[i])
+        {
+            for(int k=i*i;k<=M;k+=i)
+                mark[k]=1;
+        }
+    }
+    for(int i=3;i<=M;i+=2)
+    {
+        if(!mark[i]) vex.push_back(i);
+    }
+    return vex;
+
+}
+int main()
+{
+    vector<int>vect=sieve();
+    long long int x;while(cin>>x && x!=0)
+    {
+        long div=1,i=0,c=0;
+        while(x>1)
+        {
+            while(x%vect[i]==0)
+            {
+                x/=vect[i];c++;
+            }
+            div*=(c+1);
+            i++;c=0;
+            if(vect.begin()+i==vect.end()){div=2;break;}
+        }
+        cout<<(div%2?"yes\n":"no\n");
+    }
+return 0;
+}
