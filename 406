@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+#define rep(i,n) for(int i=0;i<n;i++)
+#define per(i,n) for(int i=n-1;i>=0;i--)
+#define pb push_back
+#define mp make_pair
+#define MOD 1000000007
+using namespace std;
+
+int main()
+{
+    int a,b;
+    while(cin>>a>>b && a!=EOF)
+    {
+        printf("%d %d:",a,b);
+        vector<int>vect{1};
+        for(int i=2;i<=a;i++)
+        {
+            int flag=1;
+            for(int j=2;j<i;j++)
+            {
+                if(i%j==0){ flag=0;break;}
+            }
+            if(flag){vect.pb(i);}
+        }
+        int mid=vect.size()/2;
+        if(b>mid)
+            rep(i,vect.size()) cout<<' '<<vect[i];
+        else{if(vect.size()%2)
+        {
+
+            for(int i=mid-b+1;i<mid+b;i++)
+                cout<<' '<<vect[i];
+        }
+        else
+        {
+            for(int i=mid-b;i<mid+b;i++)
+                cout<<' '<<vect[i];
+        }}
+        printf("\n\n");
+    }
+    return 0;
+}
