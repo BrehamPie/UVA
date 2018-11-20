@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define M 20000000
+bool mark[M];
+vector<int>sieve()
+{
+    vector<int>vex{2};
+    for(int i=3;i*i<=M;i+=2)
+    {
+        if(!mark[i])
+        {
+            for(int j=i*i;j<=M;j+=i)
+                mark[j]=1;
+        }
+    }
+    for(int i=3;i<=M;i+=2)
+    {
+        if(!mark[i] && !mark[i+2]) vex.push_back(i);
+    }
+    return vex;
+
+}
+int main()
+{
+    vector<int>vect=sieve();
+    int x;while(cin>>x && x!=EOF)
+    {
+        cout<<'('<<vect[x]<<", "<<vect[x]+2<<')'<<endl;
+    }
+return 0;
+}
