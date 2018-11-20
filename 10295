@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<map>
+#include<string>
+#include<iostream>
+using namespace std;
+int main()
+{
+    map<string,int>mapi;
+    int t,n,q,i=0,sum=0;
+    string x,p;
+    scanf("%d %d",&t,&n);
+    while(t--)
+    {
+        cin>>p>>q;
+        mapi[p]=q;
+    }
+    for(int j=0;j<n;j++){
+            sum=0;
+    while(cin>>x&&x!=".")
+        sum+=mapi[x];
+            printf("%d\n",sum);}
+    return 0;
+}
