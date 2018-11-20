@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+int gcd(int a,int b)
+{
+    if(b==0) return a;
+    else return gcd(b,a%b);
+}
+int main()
+{
+int t;cin>>t;string s;getline(cin,s);
+while(t--)
+{
+    vector<int>vecr,gvv;
+    string p;getline(cin,p);stringstream ss(p);int d;
+    while(ss>>d){vecr.push_back(d);}
+    for(int i=0;i<vecr.size();i++)
+    {
+        for(int j=i+1;j<vecr.size();j++)
+        {
+            gvv.push_back(gcd(vecr[i],vecr[j]));
+        }
+    }
+    cout<<*max_element(gvv.begin(),gvv.end())<<endl;
+}
+return 0;
+}
