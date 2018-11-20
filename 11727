@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int n,x[3],i,j,k=1,t;
+    scanf("%d",&n);
+    while(n--)
+    {
+        scanf("%d %d %d",&x[0],&x[1],&x[2]);
+        for(i=0;i<3;i++)
+        {
+            for(j=i+1;j<3;j++)
+            {
+                if(x[j]>x[i])
+                {
+                    t=x[i];
+                    x[i]=x[j];
+                    x[j]=t;
+                }
+            }
+        }
+        printf("Case %d: %d\n",k,x[1]);
+        k++;
+    }
+    return 0;
+}
