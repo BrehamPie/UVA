@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int i,j,n,p;
+    list<int>vect;
+    list<int>::iterator itr;
+    while(scanf("%d",&n)!=EOF)
+        vect.push_back(n);
+    while(vect.size()>0)
+    {
+        itr=vect.begin();
+        printf("%d %d\n",*itr,count(vect.begin(),vect.end(),*itr));
+        vect.remove(*itr);
+
+    }
+    return 0;
+}
