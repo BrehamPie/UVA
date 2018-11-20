@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define M 1000000
+bool marked[M];
+void sieve(int n) {marked[2]=false;
+  for (int i = 3; i*i < n; i+=2) {
+    if (marked[i] == false) { // i is a prime
+      for (int j = i*i; j <= n; j += i+i) {
+        marked[j] = true;
+      }
+    }
+  }
+}
+
+int main()
+{
+    int n1;
+    sieve(1000000);
+        vector<int>vect{2};
+        for(int i=3;i<=1000000;i+=2)
+        {
+            if(marked[i]==0)vect.push_back(i);
+        }
+    while(scanf("%d",&n1) && n1!=0)
+    {
+
+        for(int i=0;i<vect.size();i++)
+        {
+            int c=n1-vect[i];
+            if(c==*lower_bound(vect.begin(),vect.end(),c)){cout<<n1<<' '<<'='<<' '<<vect[i]<<' '<<'+'<<' '<<c<<endl;break;}
+        if(i>=vect.size()/2){cout<<"Goldbach's conjecture is wrong."<<endl;break;}
+        }
+
+    }
+
+    return 0;
+}
