@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+#define pb insert
+using namespace std;
+int main()
+{
+    set<string>vect;
+    char c,str[200];
+    int k=0;
+    while(c=getchar())
+    {
+        if(c==EOF) break;
+        c=tolower(c);
+        if(c>='a' && c<='z') {str[k++]=c;}
+        else
+        {
+            str[k++]='\0';
+            if(k>1)
+                vect.pb(str);
+            k=0;
+        }
+    }
+    set<string>::iterator it;
+    for(it=vect.begin();it!=vect.end();it++) cout<<*it<<endl;
+    return 0;
+}
