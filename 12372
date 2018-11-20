@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+int main()
+{
+    int t,i=1;cin>>t;
+    while(t--)
+    {
+        int a,b,c;cin>>a>>b>>c;
+        if(a<21 && b<21 && c<21) printf("Case %d: good\n",i++);
+        else printf("Case %d: bad\n",i++);
+    }
+    return 0;
+}
