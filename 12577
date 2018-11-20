@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    char x[6];
+    int k=1;
+    while (1)
+    {
+        scanf("%s",x);
+        if(x[0]=='H')
+            printf("Case %d: Hajj-e-Akbar\n",k);
+        else if (x[0]=='U')
+            printf("Case %d: Hajj-e-Asghar\n",k);
+        else
+            return 0;
+        k++;
+    }
+}
