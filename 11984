@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+int main()
+{
+    int t,i=1;cin>>t;
+    while(t--)
+    {
+        float a,b;cin>>a>>b;a=1.8*a+32+b;
+        float ans=((5*(a-32))/9.0);
+        printf("Case %d: %.2f\n",i++,ans);
+    }
+    return 0;
+}
