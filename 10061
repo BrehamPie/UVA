@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define PI acos(-1.0)
+bool mark[1000];
+vector<int>sieve()
+{
+    vector<int>vex{2};
+    for(int i=4;i<=2;i+=2) mark[i]=1;
+    for(int i=3;i*i<=1000;i+=2)
+    {
+        if(!mark[i])
+        {
+            for(int j=i*i;j<=1000;j+=i)
+                mark[j]=1;
+        }
+    }
+    for(int i=3;i<=1000;i+=2){if(!mark[i]) vex.push_back(i);}
+    return vex;
+
+}
+int digit(long long int m,int n)
+{
+    int c=0;int b=n;
+    while(m>=n)
+    {
+        c+=m/n;
+        n*=b;
+    }
+    return c;
+}
+int main()
+{
+    vector<int>vect=sieve();
+    long long int n;double dig=0;int m;
+    while(cin>>n>>m && n!=EOF)
+    {
+        int i=0,p=0;
+     vector<pair<int,int>>pds;
+            for(i=2;i<=n;i++)
+                {dig+=((log10(i))/(double)log10(m));}
+        i=0;
+    while(m>1)
+    {
+        int p=0;
+        while(m%vect[i]==0)
+        {
+            m/=vect[i];
+            p++;
+        }
+        if(p>0) pds.push_back(make_pair(vect[i],p));
+        i++;}
+        int minzer=100000000,zer;
+        for(int i=0;i<pds.size();i++)
+        {
+
+           zer=digit(n,pds[i].first);zer/=pds[i].second;
+           if(zer<minzer)minzer=zer;
+        }
+        int digi=dig+1;dig=0;
+        cout<<minzer<<' '<<digi<<endl;}
+    return 0;
+}
