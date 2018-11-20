@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<map>
+#include<string.h>
+#include<string>
+#include<cstdio>
+#include<iostream>
+using namespace std;
+int main()
+{
+    char fl[11],el[11],gl[11],line[100];
+    map<string,string>m;
+    while(gets(line))
+    {
+        if(strcmp(line,"")==0)
+            break;
+        sscanf(line,"%s %s",el,fl);
+        m[fl]=el;
+    }
+    while(gets(line))
+    {
+        if(m[line]=="")
+            printf("eh\n");
+        else
+        {
+            cout<<m[line]<<endl;
+    }
+}}
