@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+while(1)
+{
+    vector<int>vect;int n;
+    while(cin>>n &&n!=0)
+    {
+
+        vect.push_back(n);}if(vect.empty()) return 0;
+        if(vect.size()==2){ cout<<abs(vect[0]-vect[1])<<endl;}
+        else
+        {
+            int d=__gcd(abs(vect[0]-vect[1]),abs(vect[1]-vect[2]));
+        for(int i=2;i<vect.size()-1;i++)
+        {
+            d=__gcd(d,abs(vect[i]-vect[i+1]));
+        }
+        cout<<d<<endl;
+        }
+}
+}
