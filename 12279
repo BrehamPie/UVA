@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+int main()
+{
+    int n,i=1;
+    while(cin>>n && n>0)
+    {
+        int ans=0;
+        rep(i,n){int p;cin>>p;if(p) ans++;else ans--;}
+        printf("Case %d: %d\n",i++,ans);
+    }
+    return 0;
+}
