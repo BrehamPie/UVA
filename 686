@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define M 50040
+bool marked[M];
+void sieve(int n) {marked[2]=false;
+  for (int i = 3; i*i < n; i+=2) {
+    if (marked[i] == false) { // i is a prime
+      for (int j = i*i; j <= n; j += i+i) {
+        marked[j] = true;
+      }
+    }
+  }
+}
+
+int main()
+{
+    int n1;
+    sieve(50000);
+        vector<int>vect{2};
+        for(int i=3;i<=50000;i+=2)
+        {
+            if(marked[i]==0)vect.push_back(i);
+        }
+    while(scanf("%d",&n1) && n1!=0)
+    {
+        int ans=0;
+        for(int i=0;vect[i]<=n1/2;i++)
+        {
+            int c=n1-vect[i];
+            if(binary_search(vect.begin(),vect.end(),c)){ans++;}
+        }
+        cout<<ans<<endl;
+    }
+
+    return 0;
+}
