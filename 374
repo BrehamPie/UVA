@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long int BM(long long a,long long int p,int m)
+{
+    if(p==0) return 1;
+    if(p%2)
+    {
+        return ((a%m)*(BM(a,p-1,m)%m))%m;
+    }
+    else
+    {
+        long long c=BM(a,p/2,m);
+        return ((c%m)*(c%m))%m;
+    }
+}
+int main()
+{
+    long long int a,p;int m;
+    while(scanf("%lld %lld %d",&a,&p,&m)!=EOF)
+    {
+        printf("%lld\n",BM(a,p,m));
+    }
+    return 0;
+}
