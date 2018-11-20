@@ -1,0 +1,83 @@
+#include<bits/stdc++.h>
+#define rep(i,n) for(int i=0;i<n;i++)
+#define per(i,n) for(int i=n-1;i>=0;i--)
+
+using namespace std;
+
+int main()
+{
+    int t,ii=1;cin>>t;
+    while(t--)
+    {
+        int n;cin>>n;
+        vector<string>vect;
+        rep(i,n) {string k;cin>>k;vect.push_back(k);}
+        int m;cin>>m;
+        while(m--)
+        {
+            string x;
+            cin>>x;
+            if(x=="row")
+            {
+                int a,b;cin>>a>>b;a--;b--;
+                string tt=vect[a];
+                vect[a]=vect[b];
+                vect[b]=tt;
+
+            }
+            else if(x=="col")
+            {
+                int a,b;cin>>a>>b;a--,b--;
+                for(int i=0;i<n;i++)
+                {
+                    char c=vect[i][a];
+                    vect[i][a]=vect[i][b];
+                    vect[i][b]=c;
+                }
+            }
+            else if(x=="inc")
+            {
+                for(int i=0;i<n;i++)
+                {
+                    for(int j=0;j<n;j++)
+                    {
+                        vect[i][j]=(vect[i][j]-48);
+                        vect[i][j]+=1;
+                        vect[i][j]%=10;
+                        vect[i][j]+=48;
+                    }
+                }
+            }
+            else if(x=="dec")
+            {
+                for(int i=0;i<n;i++)
+                {
+                    for(int j=0;j<n;j++)
+                    {
+                        vect[i][j]=(vect[i][j]-48);
+                        vect[i][j]-=1;
+                        vect[i][j]%=10;
+                        vect[i][j]+=48;
+                        if(vect[i][j]<48) vect[i][j]='9';
+                    }
+                }
+            }
+            else
+            {
+                for(int i=0;i<n;i++)
+                {
+                    for(int j=i;j<n;j++)
+                    {
+                        char c=vect[i][j];
+                        vect[i][j]=vect[j][i];
+                        vect[j][i]=c;
+                    }
+                }
+            }
+
+        }
+        printf("Case #%d\n",ii++);
+        rep(i,n) cout<<vect[i]<<endl;
+        cout<<endl;
+    }
+}
