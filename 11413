@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,n) for(int i=0;i<n;i++)
+#define M 1000000
+#define pb push_back
+int m,n;
+int fun(int mi,int arr[])
+{
+    int con=0,i=0,fl;
+    while(i<n)
+    {
+        int ans=0;fl=1;
+        for(;i<n;i++)
+        {
+            if(ans+arr[i]<=mi) ans+=arr[i];
+            else if(arr[i]>mi) return 0;
+            else {con++;fl=0;break;}
+        }
+    }
+    if(fl) con++;
+    if(con<=m) return 1;
+    else return 0;
+}
+int bs(int arr[])
+{
+    int ans=1000000000,lo=1,hi=1000000000;
+    while(hi>lo)
+    {
+        int mi=lo+(hi-lo)/2;
+        if(fun(mi,arr)==1)
+        {
+            hi=mi;
+            if(ans>mi) ans=mi;
+        }
+        else lo=mi+1;
+    }
+    return ans;
+}
+int main()
+{
+    int ss=0,anss[100000];
+    while(cin>>n>>m && n!=EOF)
+    {
+        int arr[n];
+        rep(i,n) cin>>arr[i];
+        int ans=bs(arr);
+        anss[ss++]=ans;
+    }
+    rep(i,ss) cout<<anss[i]<<endl;
+}
