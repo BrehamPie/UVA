@@ -1,0 +1,13 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+ll solve(int n,int k)
+{
+    if(k>n) return 0;
+    return n/k+solve(n/k+n%k,k);
+}
+int main()
+{
+    int m,n;while(cin>>m>>n && m!=EOF)
+    cout<<m+solve(m,n)<<endl;
+}
