@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i,m,n) for(int i=m;i<n;i++)
+#define ll long long
+#define pb push_back
+int n,q,cas=1;
+
+int main()
+{
+    while(cin>>n>>q && n!=0&& q!=0)
+    {
+        int arr[n];
+        rep(i,0,n) cin>>arr[i];
+        sort(arr,arr+n);
+        printf("CASE# %d:\n",cas++);
+        while(q--)
+        {
+            int qq;cin>>qq;
+            if(!binary_search(arr,arr+n,qq))
+                printf("%d not found\n",qq);
+            else
+                printf("%d found at %d\n",qq,1+lower_bound(arr,arr+n,qq)-arr);
+        }
+    }
+}
