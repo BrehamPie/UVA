@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+#define MOD 1000000007
+#define ll long long
+#define pb push_back
+using namespace std;
+bool visited[21];
+int level[21];
+void DFS(vector<int>vect[21],int source,int fin)
+{
+    memset(visited,0,sizeof visited);
+    memset(level,0,sizeof level);
+    queue<int>QQ;
+    QQ.push(source);
+    visited[source]=1;
+    level[1]=0;
+    while(!QQ.empty())
+    {
+        int v=QQ.front();QQ.pop();
+        for(int i=0;i<vect[v].size();i++)
+        {
+            if(visited[vect[v][i]]==0)
+            {
+                QQ.push(vect[v][i]);
+                level[vect[v][i]]=level[v]+1;
+                visited[vect[v][i]]=1;
+            }
+        }
+    }
+
+}
+int main()
+{
+    int cas=1;
+    while(1)
+    {
+        vector<int>nodes[21];
+        for(int i=1;i<20;i++)
+        {
+            int n;cin>>n;
+            if(n==EOF) return 0;
+            while(n--)
+            {
+                int x;cin>>x;
+                nodes[i].pb(x);
+                nodes[x].pb(i);
+            }
+        }
+        int n;
+        printf("Test Set #%d\n",cas++);
+        cin>>n;
+        while(n--)
+        {
+            int x,y;
+            cin>>x>>y;
+            DFS(nodes,x,y);
+            printf("%2d to %2d: %d\n",x,y,level[y]);
+        }
+        cout<<endl;
+    }
+}
