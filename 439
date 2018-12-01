@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+#define pii pair<int, int>
+#define clear(a) memset(a, 0, sizeof(a))
+#define mp make_pair
+#define pb push_back
+
+using namespace std;
+
+string str1,str2;
+int cost[10][10];
+bool vis[10][10];
+int fx[]={1,1,2,2,-1,-1,-2,-2};
+int fy[]={2,-2,1,-1,2,-2,1,-1};
+void bfs(int a,int b,int c,int d)
+{
+    memset(vis, 0, sizeof(vis));
+    queue<pii>q;
+    q.push(mp(a,b));
+    vis[a][b]=1;
+    cost[a][b]=0;
+    while(!q.empty())
+    {
+        pii top=q.front();q.pop();
+        int x=top.first;
+        int y=top.second;
+        for(int i=0;i<8;i++)
+        {
+            int f=x+fx[i];
+            int s=y+fy[i];
+            if(f>0 && f<9 && s>0 && s<9 && vis[f][s]==0)
+            {
+                vis[f][s]=1;
+                cost[f][s]=cost[x][y]+1;
+                q.push(mp(f,s));
+            }
+        }
+    }
+}
+
+
+
+int main()
+{
+    while(cin>>str1>>str2)
+    {
+        int sx = str1[0] - 96;
+        int sy = str1[1] - '0';
+        int dx = str2[0] - 96;
+        int dy = str2[1] - '0';
+        bfs(sx,sy,dx,dy);
+        cout<<"To get from "<<str1<<" to "<<str2<<" takes "<<cost[dx][dy]<<" knight moves.\n";
+    }
+    return 0;
+}
