@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+#define pb push_back
+#define siz 100000+1
+#define inf 1000000004
+#define mp make_pair
+#define rep(i,n) for(int i=0;i<n;i++)
+#define ll long long
+using namespace std;
+int main()
+{
+    string str ;
+    while(cin>>str && str[0]!=EOF)
+    {
+        rep(i,str.size())
+            printf("%c",str[i]-7);
+        cout<<endl;
+    }
+    return 0;
+
+}
